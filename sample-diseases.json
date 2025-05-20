@@ -1,0 +1,73 @@
+{
+  "diseases": [
+    {
+      "name": "Type 2 Diabetes",
+      "overview": "Type 2 diabetes is a chronic condition that affects the way your body metabolizes sugar (glucose). With type 2 diabetes, your body either resists the effects of insulin — a hormone that regulates the movement of sugar into your cells — or doesn't produce enough insulin to maintain normal glucose levels.",
+      "symptoms": [
+        "Increased thirst",
+        "Frequent urination",
+        "Increased hunger",
+        "Unintended weight loss",
+        "Fatigue",
+        "Blurred vision",
+        "Slow-healing sores",
+        "Frequent infections"
+      ],
+      "whenToSeeDoctor": "If you notice any possible diabetes symptoms, contact your doctor. The earlier the condition is diagnosed, the sooner treatment can begin. If you've already been diagnosed with diabetes, follow your doctor's instructions for monitoring your blood sugar.",
+      "treatmentAndRemedies": "Treatment for type 2 diabetes includes monitoring your blood sugar levels, maintaining a healthy diet, regular exercise, and possibly diabetes medications or insulin therapy. Your doctor will determine the best treatment plan for your specific situation.",
+      "preventionTips": [
+        "Maintain a healthy weight",
+        "Exercise regularly",
+        "Eat a balanced diet",
+        "Limit processed foods",
+        "Get regular health screenings"
+      ],
+      "relatedSymptoms": [
+        "Numbness in feet or legs",
+        "Darkened skin areas",
+        "Unexplained weight changes",
+        "Irritability"
+      ],
+      "tags": [
+        "diabetes",
+        "blood sugar",
+        "chronic condition",
+        "metabolic disorder"
+      ]
+    },
+    {
+      "name": "Hypertension",
+      "overview": "Hypertension, or high blood pressure, is a common condition in which the long-term force of the blood against your artery walls is high enough that it may eventually cause health problems, such as heart disease.",
+      "symptoms": [
+        "Headaches",
+        "Shortness of breath",
+        "Nosebleeds",
+        "Flushing",
+        "Dizziness",
+        "Chest pain"
+      ],
+      "whenToSeeDoctor": "Regular blood pressure readings are important. If your blood pressure is consistently above 130/80 mm Hg, consult your doctor. If you have chest pain, severe headache, difficulty breathing, or irregular heartbeat, seek immediate medical attention.",
+      "treatmentAndRemedies": "Treatment includes lifestyle changes such as a healthy diet, regular exercise, and stress management. Medications may be prescribed depending on your blood pressure levels and overall health condition. Regular monitoring and follow-up with your healthcare provider is essential.",
+      "preventionTips": [
+        "Reduce salt intake",
+        "Maintain healthy weight",
+        "Exercise regularly",
+        "Limit alcohol",
+        "Quit smoking",
+        "Manage stress"
+      ],
+      "relatedSymptoms": [
+        "Anxiety",
+        "Blood spots in eyes",
+        "Facial flushing",
+        "Fatigue"
+      ],
+      "tags": [
+        "blood pressure",
+        "cardiovascular",
+        "heart health",
+        "chronic condition"
+      ]
+    }
+  ]
+} 
