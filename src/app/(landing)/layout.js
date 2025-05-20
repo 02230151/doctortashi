@@ -10,8 +10,10 @@ export const metadata = {
 
 export default function LandingLayout({ children }) {
   return (
-    <div className="min-h-screen">
-      {children}
-    </div>
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+      </body>
+    </html>
   );
 } 

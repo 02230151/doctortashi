@@ -2,10 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'CureLink - Healthcare Platform',
@@ -14,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="min-h-screen bg-gray-50">
+    <html lang="en">
+      <body className={inter.className}>
         <Providers>
           {children}
         </Providers>

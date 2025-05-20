@@ -1,10 +1,7 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-
-export const metadata = {
-  title: 'CureLink - Your Health Journey',
-  description: 'Your health, your stories, our guidance.',
-};
 
 export default function Home() {
   return (
