@@ -1,23 +1,29 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const metadata = {
+  title: 'CureLink - Healthcare Platform',
+  description: 'Connect with healthcare professionals and share your health journey',
+};
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/images/index.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          backgroundBlendMode: 'multiply'
-        }}
-      />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/index.jpeg"
+          alt="Background"
+          fill
+          priority
+          sizes="100vw"
+          quality={100}
+          className="object-cover"
+          style={{
+            filter: 'brightness(0.5)',
+          }}
+        />
+      </div>
 
       {/* Top Navigation Bar */}
       <header className="relative z-10 w-full">
