@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import Story from '@/models/Story';
-import dbConnect from '@/lib/dbConnect';
+import connectDB from '@/lib/db/mongodb';
 
 export async function POST(req, { params }) {
   try {
@@ -10,7 +10,7 @@ export async function POST(req, { params }) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
+    await connectDB();
     const { id } = params;
 
     const story = await Story.findById(id);
@@ -40,7 +40,7 @@ export async function DELETE(req, { params }) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
+    await connectDB();
     const { id } = params;
 
     const story = await Story.findById(id);
