@@ -20,6 +20,13 @@ const nextConfig = {
     }
     return config;
   },
+  // Clear build cache and ensure clean builds
+  onDemandEntries: {
+    maxInactiveAge: 0,
+    pagesBufferLength: 0,
+  },
+  // Ensure clean builds
+  cleanDistDir: true,
 };
 
 export default nextConfig;
