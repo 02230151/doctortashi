@@ -1,8 +1,14 @@
 {
+  "version": 2,
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "ignoreCommand": "echo 'Skipping build'",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "builds": [
+    {
+      "src": "next.config.mjs",
+      "use": "@vercel/next"
+    }
+  ]
 } 

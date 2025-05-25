@@ -2,13 +2,13 @@
 const nextConfig = {
   images: {
     domains: ['localhost'],
-    unoptimized: false,
+    unoptimized: true,
   },
   output: 'standalone',
   distDir: '.next',
   experimental: {
     serverActions: {
-      allowedOrigins: ['localhost:3000'],
+      allowedOrigins: ['localhost:3000', '*.vercel.app'],
     },
   },
   webpack: (config, { isServer }) => {
