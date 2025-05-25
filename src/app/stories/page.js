@@ -154,7 +154,15 @@ export default function Stories() {
                   {story.prescriptionProof && (
                     <div className="mb-2">
                       <span className="font-semibold">Prescription or Proof: </span>
-                      <a href={story.prescriptionProof} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View Document</a>
+                      {story.prescriptionProof.startsWith('data:') ? (
+                        <img 
+                          src={story.prescriptionProof} 
+                          alt="Prescription proof" 
+                          className="max-w-xs mt-2 rounded-lg shadow-sm"
+                        />
+                      ) : (
+                        <a href={story.prescriptionProof} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View Document</a>
+                      )}
                     </div>
                   )}
                   <div className="mt-4">

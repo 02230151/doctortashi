@@ -167,14 +167,22 @@ export default function StoryPage() {
                 <div className="mb-4">
                   <h3 className="text-lg font-medium text-gray-900">Prescription or Proof</h3>
                   <div className="mt-2">
-                    <a
-                      href={story.prescriptionProof}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      View Document
-                    </a>
+                    {story.prescriptionProof.startsWith('data:') ? (
+                      <img 
+                        src={story.prescriptionProof} 
+                        alt="Prescription proof" 
+                        className="max-w-md rounded-lg shadow-sm"
+                      />
+                    ) : (
+                      <a
+                        href={story.prescriptionProof}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline"
+                      >
+                        View Document
+                      </a>
+                    )}
                   </div>
                 </div>
               )}

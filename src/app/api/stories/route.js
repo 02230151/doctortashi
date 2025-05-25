@@ -2,11 +2,6 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import Story from '@/models/Story';
 import connectDB from '@/lib/db/mongodb';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-
-// Ensure uploads directory exists
-const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'stories');
 
 export async function POST(req) {
   try {
@@ -16,17 +11,6 @@ export async function POST(req) {
     }
 
     await connectDB();
-
-    // Create upload directory if it doesn't exist
-    try {
-      await mkdir(uploadDir, { recursive: true });
-    } catch (error) {
-      console.error('Error creating directory:', error);
-      return NextResponse.json(
-        { message: 'Failed to create upload directory' },
-        { status: 500 }
-      );
-    }
 
     const formData = await req.formData();
     const data = {
@@ -40,13 +24,12 @@ export async function POST(req) {
     const prescriptionFile = formData.get('prescriptionProof');
     if (prescriptionFile) {
       const buffer = await prescriptionFile.arrayBuffer();
-      const filename = `${Date.now()}-${prescriptionFile.name}`;
-      const filePath = path.join(uploadDir, filename);
-      await writeFile(filePath, Buffer.from(buffer));
-      data.prescriptionProof = `/uploads/stories/${filename}`;
+      const base64String = Buffer.from(buffer).toString('base64');
+      const fileType = prescriptionFile.type;
+      data.prescriptionProof = `data:${fileType};base64,${base64String}`;
     }
 
-    // Create story (no disease required)
+    // Create story
     const story = await Story.create({
       ...data,
       author: session.user.id,
@@ -68,7 +51,6 @@ export async function GET(req) {
     if (status === 'verified') {
       query.verificationStatus = 'verified';
     }
-    // You may want to filter by other fields if needed
     const stories = await Story.find(query)
       .populate('author', 'name image')
       .sort({ createdAt: -1 })
