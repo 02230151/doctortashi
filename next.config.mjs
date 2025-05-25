@@ -6,6 +6,11 @@ const nextConfig = {
   },
   output: 'standalone',
   distDir: '.next',
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['localhost:3000'],
+    },
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

@@ -1,16 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import Navbar from '@/components/Navbar';
 
 export default function DoctorApplications() {
+  const { data: session } = useSession();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchApplications();
-  }, []);
+    if (session) {
+      fetchApplications();
+    }
+  }, [session]);
 
   const fetchApplications = async () => {
     try {
