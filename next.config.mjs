@@ -4,10 +4,11 @@ const nextConfig = {
     domains: ['localhost'],
     unoptimized: false,
   },
-  experimental: {
-    appDir: true,
-  },
   output: 'standalone',
+  distDir: '.next',
+  webpack: (config, { isServer }) => {
+    return config;
+  },
 };
 
 export default nextConfig;
