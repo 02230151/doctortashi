@@ -12,34 +12,36 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        await connectDB();
+        try {
+          await connectDB();
 
-        const { email, password } = credentials;
+          const { email, password } = credentials;
 
-        if (!email || !password) {
-          console.log('Missing email or password');
+          if (!email || !password) {
+            throw new Error('Missing email or password');
+          }
+
+          const user = await User.findOne({ email }).select('+password');
+          if (!user) {
+            throw new Error('User not found');
+          }
+
+          const isPasswordCorrect = await bcrypt.compare(password, user.password);
+          if (!isPasswordCorrect) {
+            throw new Error('Invalid password');
+          }
+
+          return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            isActive: user.isActive,
+          };
+        } catch (error) {
+          console.error('Auth error:', error.message);
           return null;
         }
-
-        const user = await User.findOne({ email }).select('+password');
-        if (!user) {
-          console.log('User not found:', email);
-          return null;
-        }
-
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
-        if (!isPasswordCorrect) {
-          console.log('Password incorrect for user:', email);
-          return null;
-        }
-
-        return {
-          id: user._id.toString(),
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          isActive: user.isActive,
-        };
       },
     }),
   ],
@@ -67,6 +69,8 @@ export const authOptions = {
   },
   session: {
     strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  secret: process.env.NEXTAUTH_SECRET || 'dev-secret',
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
 }; 

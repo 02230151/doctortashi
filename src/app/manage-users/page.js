@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import Navbar from '@/components/Navbar';
 
 export default function ManageUsers() {
+  const { data: session } = useSession();
   const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRole, setSelectedRole] = useState('all');
@@ -11,8 +13,10 @@ export default function ManageUsers() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (session) {
+      fetchUsers();
+    }
+  }, [session]);
 
   const fetchUsers = async (search = searchQuery, role = selectedRole) => {
     try {

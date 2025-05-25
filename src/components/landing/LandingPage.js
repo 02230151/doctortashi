@@ -1,12 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const metadata = {
-  title: 'CureLink - Healthcare Platform',
-  description: 'Connect with healthcare professionals and share your health journey',
-};
-
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="relative min-h-screen">
       {/* Background Image with Overlay */}
