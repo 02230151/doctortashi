@@ -13,18 +13,6 @@ const nextConfig = {
         fs: false,
       };
     }
-    // Add support for client components
-    config.module.rules.push({
-      test: /\.(js|jsx|ts|tsx)$/,
-      use: [
-        {
-          loader: 'babel-loader',
-          options: {
-            presets: ['next/babel'],
-          },
-        },
-      ],
-    });
     return config;
   },
 };
